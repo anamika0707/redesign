@@ -1,19 +1,21 @@
-import Hero from "../components/Hero";
-import Services from "../components/Services";
-import About from "../components/About";
-import Faq from "../components/Faq";
-import CTA from "../components/CTA";
-import Footer from "../components/Footer";
-import OurOffice from "../components/Ouroffice";
+import Navbar from "@/components/Navbar";
+import Hero from "@/components/Hero";
+import About from "@/components/About";
+import Services from "@/components/Services";
+import Office from "@/components/Office";
+import FAQ from "@/components/FAQ";
+import CTA from "@/components/CTA";
+import Footer from "@/components/Footer";
 
 export default function Page() {
   return (
     <>
+      <Navbar />
       <Hero />
-      <Services />
       <About />
-      <OurOffice/>
-      <Faq />
+      <Services />
+      <Office />
+      <FAQ />
       <CTA />
       <Footer />
     </>

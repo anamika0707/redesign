@@ -1,19 +1,15 @@
 import "./globals.css";
-import Navbar from "../components/Navbar";
 
 export const metadata = {
-  title: "Dr. Maya Reynolds | Therapist in Santa Monica",
+  title: "Dr. Maya Reynolds | Therapy in Santa Monica",
   description:
-    "Therapy for anxiety, trauma, and burnout in Santa Monica and across California.",
+    "Compassionate therapy for anxiety, trauma, and burnout in Santa Monica and throughout California.",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
-        <Navbar />
-        {children}
-      </body>
+      <body className="bg-[#F5F4EF] text-[#1F2A1F]">{children}</body>
     </html>
   );
 }

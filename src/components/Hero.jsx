@@ -1,51 +1,77 @@
+import { MapPin, Phone, Video } from "lucide-react";
+import Image from "next/image";
+import Reveal from "@/components/Reveal";
+
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden bg-secondary">
-      {/* soft background glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(138,154,91,0.18),_transparent_60%)]" />
+    <section className="relative h-[80vh] md:h-[90vh] min-h-[560px] md:min-h-[700px] flex items-center overflow-hidden">
+      
+      {/* Background scenery image */}
+      <Image
+        src="/hero-bg.jpg"   // place your calm scenery image in /public
+        alt="Calm nature scenery"
+        fill
+        priority
+        className="object-cover"
+      />
 
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 lg:py-28 grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
+      {/* Soft overlay for readability */}
+      <div className="absolute inset-0 bg-[#F5F2EC]/85" />
 
-        {/* LEFT CONTENT */}
-        <div className="space-y-6 sm:space-y-8 text-center lg:text-left">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight text-primary px-2">
-            Gentle Therapy for  
-            <span className="text-accent"> Meaningful Change</span>
+      {/* Content */}
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 w-full">
+        <Reveal className="max-w-2xl">
+          
+          {/* Location badge */}
+          <div className="inline-flex items-center gap-2 bg-[#E7ECE8] text-[#3E5B4A] px-4 py-2 rounded-full text-sm mb-6">
+            <MapPin className="w-4 h-4" />
+            Santa Monica, California
+          </div>
+
+          {/* Heading */}
+          <h1 className="text-[40px] sm:text-[48px] md:text-[64px] leading-[1.1] font-serif text-[#2F3A33] mb-6">
+            Find Calm <br />
+            <span className="text-[#4F6F59]">in the Chaos</span>
           </h1>
 
-          <p className="text-base sm:text-lg text-primary/80 max-w-xl leading-relaxed mx-auto lg:mx-0 px-2">
-            Dr. Maya Reynolds offers compassionate, evidence-based therapy to
-            help adults navigate anxiety, relationships, and life transitions
-            in a calm and supportive environment.
+          {/* Description */}
+          <p className="text-base sm:text-lg text-[#5F6B63] leading-relaxed mb-6">
+            Compassionate, evidence-based therapy for high-achieving adults
+            navigating <strong>anxiety, trauma, and burnout.</strong> Rediscover
+            peace with a licensed clinical psychologist who understands.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start px-2">
-            <button className="px-6 sm:px-8 py-3 sm:py-4 bg-primary text-black rounded-full shadow-lg hover:shadow-xl hover:scale-[1.03] transition duration-300">
-              Book a Consultation
-            </button>
-
-            <button className="px-6 sm:px-8 py-3 sm:py-4 border border-primary rounded-full hover:bg-primary hover:text-white transition duration-300">
-              Learn More
-            </button>
-          </div>
-        </div>
-
-        {/* RIGHT IMAGES */}
-        <div className="relative flex justify-center lg:justify-end mt-8 lg:mt-0">
-
-          {/* main organic image */}
-          <div className="relative w-[280px] sm:w-[340px] md:w-[420px] lg:w-[460px] aspect-[4/5] rounded-[140px] sm:rounded-[220px] overflow-hidden shadow-2xl">
-            <img
-              src="/hero.png"
-              alt="Calm therapy space"
-              className="w-full h-full object-cover"
-            />
+          {/* Bullet points */}
+          <div className="flex flex-wrap gap-4 sm:gap-6 text-sm text-[#6B746D] mb-8">
+            {[
+              "EMDR & CBT Trained",
+              "Licensed Psychologist",
+              "Telehealth Available",
+            ].map((item, i) => (
+              <div key={i} className="flex items-center gap-2">
+                <span className="w-2 h-2 bg-[#B07A56] rounded-full" />
+                {item}
+              </div>
+            ))}
           </div>
 
-          {/* subtle decorative blur */}
-          <div className="absolute -top-10 -right-10 w-32 sm:w-48 h-32 sm:h-48 bg-gold/20 rounded-full blur-3xl" />
-        </div>
+          {/* CTA buttons */}
+          <div className="flex flex-wrap gap-4">
+            <button className="bg-[#3E5B4A] text-white px-7 py-4 rounded-xl flex items-center gap-2 font-medium shadow-sm hover:bg-[#324A3D] transition w-full sm:w-auto justify-center">
+              <Phone className="w-5 h-5" />
+              Schedule Free Consultation
+            </button>
+
+            <button className="border border-[#AAB5AE] bg-white/70 backdrop-blur text-[#2F3A33] px-7 py-4 rounded-xl flex items-center gap-2 font-medium hover:bg-white transition w-full sm:w-auto justify-center">
+              <Video className="w-5 h-5" />
+              Telehealth Sessions
+            </button>
+          </div>
+        </Reveal>
       </div>
+
+      {/* Bottom soft gradient fade */}
+      <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#F5F2EC] to-transparent" />
     </section>
   );
 }

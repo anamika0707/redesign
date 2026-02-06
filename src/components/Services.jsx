@@ -1,47 +1,108 @@
-export default function Hero() {
+import Image from "next/image";
+import Reveal from "@/components/Reveal";
+
+const services = [
+  {
+    title: "Anxiety & Panic Therapy",
+    desc: "Comprehensive treatment for chronic anxiety, panic attacks, and constant worry using CBT and mindfulness-based approaches.",
+    img: "/mindfulness.jpg",
+    tags: ["Generalized Anxiety", "Panic Disorder", "Social Anxiety", "Health Anxiety"],
+  },
+  {
+    title: "Trauma & PTSD Treatment",
+    desc: "Specialized EMDR and trauma-focused therapy for adults experiencing single-incident or complex trauma.",
+    img: "/self-care.jpg",
+    tags: ["EMDR Therapy", "Complex Trauma", "PTSD", "Childhood Trauma"],
+  },
+  {
+    title: "Burnout & Perfectionism",
+    desc: "Therapy for high-achievers feeling exhausted, disconnected, or overwhelmed by pressure and expectations.",
+    img: "/mindfulness.jpg",
+    tags: ["Work Stress", "High Achievers", "Perfectionism", "Life Balance"],
+  },
+];
+
+export default function Services() {
   return (
-    <section className="relative overflow-hidden bg-secondary">
-      {/* soft gradient glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(190,150,110,0.15),_transparent_60%)]" />
+    <section
+      className="relative py-16 md:py-28 px-4 sm:px-6 bg-cover bg-center"
+      style={{ backgroundImage: "url('/section-bg.jpg')" }}
+    >
+      <div className="absolute inset-0 bg-white/70" aria-hidden="true" />
+      <div className="relative z-10 max-w-6xl mx-auto text-center">
 
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 py-12 sm:py-20 lg:py-28 grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
+        <Reveal>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#243024] mb-6">
+            Therapy Services in Santa Monica
+          </h2>
 
-
-        {/* RIGHT IMAGE */}
-        <div className="relative order-1 lg:order-none">
-          <div className="absolute -inset-4 sm:-inset-6 bg-gradient-to-tr from-accent/20 to-gold/20 blur-3xl rounded-full" />
-          <img
-            src="/about.png"
-            className="relative rounded-[6rem] sm:rounded-[8rem] lg:rounded-[10rem] shadow-2xl"
-            alt="Therapy services"
-          />
-        </div>
-        
-        {/* LEFT TEXT */}
-        <div className="space-y-6 sm:space-y-8 order-2 lg:order-none text-center lg:text-left">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight text-primary px-2 lg:px-0">
-            Compassionate Therapy for  
-            <span className="text-accent"> Real Healing</span>
-          </h1>
-
-          <p className="text-base sm:text-lg text-primary/80 max-w-xl leading-relaxed mx-auto lg:mx-0 px-2 lg:px-0">
-            Dr. Maya Reynolds provides thoughtful, evidence-based therapy in a
-            calm and supportive space—helping adults navigate anxiety,
-            relationships, and life transitions with clarity and confidence.
+          <p className="text-[#4A5A4A] max-w-2xl mx-auto mb-10 sm:mb-16">
+            Evidence-based therapy tailored to adults navigating anxiety,
+            trauma, and burnout — available in-person or via secure telehealth.
           </p>
+        </Reveal>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start px-2 lg:px-0">
-            <button className="px-6 sm:px-8 py-3 sm:py-4 bg-primary text-black rounded-full shadow-lg hover:shadow-xl hover:scale-[1.03] transition">
-              Book a Consultation
-            </button>
+        {/* Cards */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {services.map((s, i) => (
+            <Reveal
+              key={i}
+              className="bg-[#e6e8e2] rounded-2xl overflow-hidden shadow-sm text-left"
+              delay={i * 90}
+            >
+              <Image
+                src={s.img}
+                alt={s.title}
+                width={400}
+                height={260}
+                className="w-full h-44 sm:h-52 object-cover"
+              />
 
-            <button className="px-6 sm:px-8 py-3 sm:py-4 border border-primary rounded-full hover:bg-primary hover:text-white transition">
-              Learn More
-            </button>
-          </div>
+              <div className="p-6">
+                <h3 className="font-serif text-xl text-[#243024] mb-3">
+                  {s.title}
+                </h3>
+
+                <p className="text-[#4A5A4A] mb-4 text-sm leading-relaxed">
+                  {s.desc}
+                </p>
+
+                {/* tags */}
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {s.tags.map((t, idx) => (
+                    <span key={idx} className="text-xs bg-[#dbdcda] px-3 py-1 rounded-full text-[#2F3E2F]">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+
+                <button className="text-sm text-[#2F4F3A] font-medium hover:underline">
+                  Learn more →
+                </button>
+              </div>
+            </Reveal>
+          ))}
         </div>
 
-        
+        {/* Bottom info cards */}
+        <div className="grid md:grid-cols-2 gap-6 mt-10 sm:mt-14 text-left">
+          <Reveal className="bg-[#e6e8e2] rounded-2xl p-6">
+            <h4 className="font-serif text-lg mb-2">In-Person Sessions</h4>
+            <p className="text-[#4A5A4A] text-sm">
+              Meet in my quiet Santa Monica office — a calm, grounding
+              space with natural light and comfortable seating.
+            </p>
+          </Reveal>
+
+          <Reveal className="bg-[#e6e8e2] rounded-2xl p-6" delay={120}>
+            <h4 className="font-serif text-lg mb-2">Telehealth Sessions</h4>
+            <p className="text-[#4A5A4A] text-sm">
+              Secure video therapy available throughout California,
+              offering the same quality care from home.
+            </p>
+          </Reveal>
+        </div>
+
       </div>
     </section>
   );
